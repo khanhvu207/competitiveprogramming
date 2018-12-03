@@ -10,7 +10,7 @@ Chúng ta có thể giải 3 subtasks đầu bằng DP:
     
     dp[i][1] = min(dp[i - 1][1] + (a[i] == 0), dp[i - 1][0] + (a[i] == 1));
     
-    Kết quả sẽ là ans = min(ans, dp[i][1] + suff[i + 1)); (với suff[i] tương tư mảng dp[i][0] mà là đoạn [i, n]).
+    Kết quả sẽ là ans = min(ans, dp[i][1] + suff[i + 1]); (với suff[i] tương tư mảng dp[i][0] mà là đoạn [i, n]).
   
 Cách giải subtask cuối có ý tưởng tương tự:
   
