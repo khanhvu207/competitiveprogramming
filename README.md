@@ -5,4 +5,5 @@ This repository is my competitive programming journal while I'm in high school (
 *CST 2019 is City selection team (8 official members who will participate in Vietnam Olympiad in Informatics - VNOI).*
 
 **Codeforces handle: darkpurple**
+
 **Uva id: khanhvu2072001**
