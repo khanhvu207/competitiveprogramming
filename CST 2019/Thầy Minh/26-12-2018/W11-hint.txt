@@ -1,0 +1,51 @@
+10139
+10! = 10*9*8*7*6*5*4*3*2*1
+10! = (2*5) * (3*3) * (2*2*2) * 7 * (2*3) * 5 * (2*2) * 3 * 2 * 1
+Dem so lan so nguyen to P trong n!
+count = 0;
+pow = p;
+while(pow < n)
+{ 
+count += n / p; (integer division)
+ pow *= p;
+}
+
+
+10918
+********   AA*******   AA******   A*******
+******** = BB******* + B******* + A*******
+********   CC*******   B*******   BB******
+  f(n)   =  f(n-2)   +  g(n-1)  +  g(n-1)
+
+********   A********   AA*******
+******** = A******** + BB*******
+ *******    ********    CC******
+  g(n)   =   f(n-1)  +   g(n-2)
+
+F(0) = 1; F(1) =0;
+G(0)=0; G(1)= 1;
+
+
+
+11069
+f[1] = f[2] = 1;
+    
+    for(int i = 3;i <= 76;++i)
+        f[i] = f[i - 2] + f[i - 3];
+    
+    int n;
+    
+    while(scanf("%d",&n) == 1)
+        printf("%d\n",f[n] + f[n - 1]);
+
+10541
+			// This is a problem of asking the number of ways
+			// to put lengthWhite white boxes between numBlack
+			// black regions with the following constraint:
+			// 	+ Between two consecutive black regions,
+			//	there must be at least 1 white boxes.
+			// There are numBlack + 1 spaces to put the white boxes.
+			//
+			// Answer: combination(N, K) where N = lengthWhite + 1
+			//		and K = numBlack
+
