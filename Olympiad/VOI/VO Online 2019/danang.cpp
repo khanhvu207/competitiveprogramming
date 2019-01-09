@@ -17,9 +17,7 @@ struct node {
 };
 priority_queue<node> heap;
 int n, m, d;
-long long f[N];
-bool vis[N];
-vector<vector<pair<int, int> > > g;
+vector<vector<pair<long long, int> > > g;
 
 int main() {
 	ios::sync_with_stdio(0);
@@ -29,34 +27,35 @@ int main() {
 	cin >> n >> m >> d;
 	g.resize(n + 1);
 	for (int i = 0; i < m; ++i) {
-		int u, v, c;
+		int u, v;
+		long long c;
 		cin >> u >> v >> c;
-		g[u].push_back({v, c});
-		g[v].push_back({u, c});
+		g[u].push_back({c, v});
+		g[v].push_back({c, u});
 	}
-	for (int i = 1; i <= n; ++i)
-		f[i] = inf;
-	f[1] = 0;
-	heap.push(node(1, 0, f[1]));
+	for (int i = 1; i <= n; ++i) {
+		sort(g[i].begin(), g[i].end());
+	}
+	heap.push(node(1, -1e9, 0));
 	while (!heap.empty()) {
 		int u = heap.top().u;
 		int prevlen = heap.top().prevL;
 		long long C = heap.top().c;
 		heap.pop();
-		if (C > f[u])
-			continue;
-		vis[u] = true;
-		for (const pair<int, int> &x : g[u]) {
-			int v = x.first;
-			int len = x.second;
-			if (!vis[v] && len - d >= prevlen && C + len * 1ll < f[v]) {
-				f[v] = C + len * 1ll;
-				heap.push(node(v, len, f[v]));
-			}
+		if (u == n) {
+			cout << C;
+			return 0;
+		}
+		while (!g[u].empty()) {
+			pair<long long, int> x = g[u].back();
+			int v = x.second;
+			long long len = x.first;
+			g[u].pop_back();
+			if (len - d >= prevlen) 
+				heap.push(node(v, len, C + len));
+			else
+				break;
 		}
 	}
-	if (f[n] == inf)
-		cout << -1;
-	else
-		cout << f[n];
+	cout << -1;
 }

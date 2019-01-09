@@ -3,9 +3,9 @@ using namespace std;
 const long long inf = 1e9;
 
 int n;
-vector<pair<pair<int, int>, pair<int, int> > > s;
+vector<pair<pair<long long, long long>, pair<long long, long long> > > s;
 
-long long calcx(int X) {
+long long calcx(long long X) {
 	long long sum = 0;
 	for (int i = 0; i < n; ++i)
 		if (s[i].first.first > X)
@@ -15,7 +15,7 @@ long long calcx(int X) {
 	return sum;
 }
 
-long long calcy(int Y) {
+long long calcy(long long Y) {
 	long long sum = 0;
 	for (int i = 0; i < n; ++i)
 		if (s[i].first.second > Y)
@@ -31,12 +31,16 @@ int main() {
 	freopen("tigersugar.inp", "r", stdin);
 	freopen("tigersugar.out", "w", stdout);
 	cin >> n;
-	int left, down, up, right, l = 0, r = 0, resx = 0, resy = 0;
+	long long left, down, up, right, l = 0, r = 0, resx = 0, resy = 0;
 	left = down = inf;
-	right = up = 0;
+	right = up = 0ll;
 	for (int i = 0; i < n; ++i) {
-		int xl, yl, xr, yr;
+		long long xl, yl, xr, yr;
 		cin >> xl >> yl >> xr >> yr;
+		if (xl > xr)
+			swap(xl, xr);
+		if (yl > yr)
+			swap(yl, yr);
 		s.push_back({{xl, yl}, {xr, yr}});
 		left = min(left, xl);
 		right = max(right, xr);
@@ -44,16 +48,16 @@ int main() {
 		up = max(up, yr);
 	}
 	l = left, r = right;
-	while (r - l > 2) {
-		int ml = l + (r - l) / 3;
-		int mr = r - (r - l) / 3;
+	while (r - l > 2ll) {
+		long long ml = l + (r - l) / 3ll;
+		long long mr = r - (r - l) / 3ll;
 		if (calcx(ml) < calcx(mr)) 
 			r = mr;
 		else
 			l = ml;
 	}
-	long long bestx = inf * inf;
-	for (int i = l; i <= r; ++i) {
+	long long bestx = 1e18;
+	for (long long i = l; i <= r; ++i) {
 		long long x = calcx(i);
 		if (x < bestx) {
 			bestx = x;
@@ -61,26 +65,27 @@ int main() {
 		}
 	}
 	l = down, r = up;
-	while (r - l > 2) {
-		int ml = l + (r - l) / 3;
-		int mr = r - (r - l) / 3;
+	while (r - l > 2ll) {
+		long long ml = l + (r - l) / 3ll;
+		long long mr = r - (r - l) / 3ll;
 		if (calcy(ml) < calcy(mr)) 
 			r = mr;
 		else
 			l = ml;
 	}
-	long long besty = inf * inf;
-	for (int i = l; i <= r; ++i) {
+	long long besty = 1e18;
+	for (long long i = l; i <= r; ++i) {
 		long long y = calcy(i);
 		if (y < besty) {
 			besty = y;
 			resy = i;
 		}
 	}
-	cout << bestx + besty << '\n';
+	long long res = bestx + besty;
+	cout << res << '\n';
 	cout << resx << ' ' << resy << '\n';
-	vector<int> ansx;
-	vector<int> ansy;
+	vector<long long> ansx;
+	vector<long long> ansy;
 	for (int i = 0; i < n; ++i)
 		if (s[i].first.first > resx)
 			ansx.push_back(s[i].first.first);
@@ -91,7 +96,7 @@ int main() {
 	for (int i = 0; i < n; ++i)
 		if (s[i].first.second > resy)
 			ansy.push_back(s[i].first.second);
-		else if (s[i].second.first < resy)
+		else if (s[i].second.second < resy)
 			ansy.push_back(s[i].second.second);
 		else
 			ansy.push_back(resy);
