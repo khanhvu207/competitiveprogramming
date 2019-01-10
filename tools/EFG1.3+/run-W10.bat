@@ -1,0 +1,1 @@
+runas /user:user "C:\Program Files\EFG Group\EFG1.3+W10\EFG1.3+W10.exe" 
