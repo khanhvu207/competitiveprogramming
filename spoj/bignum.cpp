@@ -2,14 +2,14 @@
 #include <vector>
 #include <iomanip>
 using namespace std;
-const int base = 10000;
 typedef vector<int> bigint;
+const int base = 10000;
 
 bigint init(string s) {
-  bigint a;
+  bigint res;
   if (s.empty()) {
-    a.push_back(0);
-    return a;
+    res.push_back(0);
+    return res;
   }
   while ((int)s.size() % 4 != 0)
     s = '0' + s;
@@ -17,9 +17,9 @@ bigint init(string s) {
     int val = 0;
     for (int j = 0; j < 4; ++j)
       val = val * 10 + (s[i + j] - 48);
-    a.insert(a.begin(), val);
+    res.insert(res.begin(), val);
   }
-  return a;
+  return res;
 }
 
 bigint operator + (const bigint &a, const bigint &b) {
@@ -56,14 +56,6 @@ bigint operator - (const bigint &a, const bigint &b) {
   return res;
 }
 
-bigint operator * (const bigint a, const int mul) {
-    bigint c; int carry = 0;
-    for (int i = 0; i < (int)a.size(); i++) {
-        carry += a[i] * mul; c.push_back(carry % base); carry /= base;
-    }
-    if (carry) c.push_back(carry); return c;
-}
-
 bigint operator * (const bigint &a, const bigint &b) {
   bigint res((int)a.size() + (int)b.size() + 5, 0);
   for (int i = 0; i < (int)a.size(); ++i) {
@@ -95,10 +87,10 @@ bool operator < (bigint a, bigint b) {
 }
 
 void print(const bigint &a) {
-  int len = (int)a.size();
-  cout << a[len - 1];
+  int L = (int)a.size();
+  cout << a[L - 1];
   cout.fill('0');
-  for (int i = len - 2; i >= 0; --i)
+  for (int i = L - 2; i >= 0; --i)
     cout << setw(4) << a[i];
   cout << '\n';
 }
@@ -114,7 +106,8 @@ int main() {
   if (a < b) {
     cout << '-';
     print(b - a);
-  } else
+  }
+  else
     print(a - b);
   print(a * b);
 }
