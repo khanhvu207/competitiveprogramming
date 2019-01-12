@@ -1,67 +1,59 @@
 #include <iostream>
 using namespace std;
-const long long mod = 1337377;
-
-struct TrieNode
-{
-	TrieNode *child[26];
-	int cnt;
-	TrieNode()
-	{
-		for (int i = 0; i < 26; ++i)
-			child[i] = NULL;
-		cnt = 0;
-	}
+const int N = 300015;
+const int mod = 1337377;
+struct trie {
+  trie *child[26];
+  int cnt;
+  trie() {
+    for (int i = 0; i < 26; ++i)
+      child[i] = NULL;
+    cnt = 0;
+  }
 };
 
-int n;
-long long dp[300015];
-string S;
-TrieNode *root = new TrieNode();
+int n, dp[N];
+trie *root = new trie();
 
-void TrieInsert (const string &s)
-{
-	TrieNode *p = root;
-	for (int i = 0; i < (int)s.size(); ++i)
-	{
-		int nxt = s[i] - 'a';
-		if (p->child[nxt] == NULL)
-			p->child[nxt] = new TrieNode();
-		p = p->child[nxt];
-	}
-	p->cnt++;
+void trieinsert(const string &s) {
+  int m = (int)s.size();
+  trie *p = root;
+  for (int i = 0; i < m; ++i) {
+    int nxt = s[i] - 'a';
+    if (p -> child[nxt] == NULL)
+      p -> child[nxt] = new trie();
+    p = p -> child[nxt];
+  }
+  ++(p -> cnt);
 }
 
-int main()
-{
-	ios_base::sync_with_stdio(0);
-	cin.tie(NULL);
-
-	cin >> S;
-	cin >> n;
-	for (int i = 0; i < n; ++i)
-	{
-		string str;
-		cin >> str;
-		TrieInsert(str);
-	}
-	int m = S.size();
-	dp[m] = 1ll;
-	for (int i = m - 1, j; i >= 0; --i)
-	{
-		long long sum = 0;
-		TrieNode *p = root;
-		for (j = i; j < m; ++j)
-		{
-			int nxt = S[j] - 'a';
-			if (p->child[nxt] == NULL) break;
-			if (p->cnt > 0)
-				sum = (sum + dp[j]) % mod;
-			p = p->child[nxt];
-		}
-		if (p->cnt > 0)
-			sum = (sum + dp[j]) % mod;
-		dp[i] = sum % mod;
-	}
-	cout << dp[0];
+int main() {
+  ios::sync_with_stdio(0);
+  cin.tie(NULL);
+  string s;
+  cin >> s;
+  cin >> n;
+  for (int i = 0; i < n; ++i) {
+    string str;
+    cin >> str;
+    trieinsert(str);
+  }
+  int k = (int)s.size();
+  dp[k] = 1ll;
+  for (int i = k - 1, j; i >= 0; --i) {
+    int cnt = 0;
+    trie *p = root;
+    for (j = i; j < k; ++j) {
+      int nxt = s[j] - 'a';
+      if (p -> child[nxt] == NULL)
+        break;
+      if (p -> cnt > 0)
+        cnt = (cnt + dp[j]) % mod;
+      p = p -> child[nxt];
+    }
+    if (p -> cnt > 0)
+      cnt = (cnt + dp[j]) % mod;
+    dp[i] = cnt;
+  }
+  cout << dp[0];
 }
