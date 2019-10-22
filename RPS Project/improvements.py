@@ -106,17 +106,17 @@ def getStatisticsPrediction(gameHistory):
     return lastMoves[max(stats[group].keys(), key=stats[group].get)]
 
 
-def getScore(gameHistory, functionName=getStatisticsPrediction):
+def getScore(gameHistory, functionName):
     score = 0
     amount = min(20, len(gameHistory))
-    gameHistory = gameHistory[:amount]
+    gameHistory = gameHistory[-amount:]
 
     for i in range(len(gameHistory)):
-        partOfGameHistory = gameHistory[0:-i]
+        partOfGameHistory = gameHistory[:i]
         # print(partOfGameHistory)
 
         prediction = functionName(partOfGameHistory)
-        realMove = gameHistory[-1][0]
+        realMove = gameHistory[i][0]
         if prediction == realMove:
             score += 1
 
@@ -158,9 +158,12 @@ def main():
         userInput = input("What to do? ").strip().lower()
 
     while max(score.values()) < 444:
+
         # computerChoice = random.choice(choices)
-        computerChoice = getOptimalChoice(gameHistory)
         userChoice = getUserChoice(choices)
+        computerChoice = getOptimalChoice(gameHistory)
+
+        print("_" * 60)
 
         print("You picked {}. The computer picked {}".format(userChoice, computerChoice))
         if userChoice == computerChoice:
@@ -174,6 +177,7 @@ def main():
 
         gameHistory.append([userChoice, computerChoice])
         print(score)
+        print("_" * 60)
     printFinalScore(score)
 
 
