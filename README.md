@@ -1,9 +1,13 @@
 # competitiveprogramming
 
-This repository is my competitive programming journal while I'm in high school (2016 to 2019 in Vietnam).
+## Honors & Awards
+1. Bronze medal at Amsterdam Algorithm Programming Preliminary 2019 (BAPC preliminary round).
+2. Honerable mention at Vietnam National Olympiad in Informatics 2019.
+3. First prize at Ho Chi Minh city Excellent student in Informatics Academic Year 2018 – 2019.
 
-*CST 2019 is City selection team (8 official members who will participate in Vietnam Olympiad in Informatics - VNOI).*
+## Description
+This is my competitive programming repository which consist of templates, old submission of online judges and ACM notebook.
 
-**Codeforces handle: hackforces**
+## CP handles
+Codeforces: hackforces
 
-**Uva id: khanhvu2072001**
