@@ -6,7 +6,7 @@
 3. First prize at Ho Chi Minh city Excellent student in Informatics Academic Year 2018 – 2019.
 
 ## Description
-This is my competitive programming repository which consist of templates, old submission of online judges and ACM notebook.
+This is my competitive programming repository which consists of templates, old submission of online judges and ACM notebook.
 
 ## CP handles
 Codeforces: hackforces
