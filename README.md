@@ -7,6 +7,3 @@
 
 ## Description
 This is my competitive programming repository which consists of templates, old submission of online judges and ACM notebook.
-
-## CP handles
-Codeforces: kvutxdy
