@@ -7,3 +7,8 @@
 
 ## Description
 This is my competitive programming repository which consists of templates, old submission of online judges and ACM notebook.
+
+## Quick links
+
+* Precompute Mobius transformation using linear sieve
+  [https://github.com/khanhvu207/competitiveprogramming/blob/master/VNSPOJ/raygun.cpp]

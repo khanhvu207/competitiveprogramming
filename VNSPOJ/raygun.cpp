@@ -9,23 +9,6 @@ using namespace std;
 int n,m,mobius[1000005],p[1000005];
 
 void precal(int maxn){
-	// for(int i=2;i<=sqrt(maxn);++i)
-	// 	if(!chk[i]) for(int j=i;j<=maxn/i;++j) chk[i*j]=true;
-	// for(int i=2;i<=maxn;++i) if(!chk[i]) p.push_back(i);
-	// mobius[1]=1;
-	// for(int i=2;i<=maxn;++i){
-	// 	bool square=false;
-	// 	int cnt=0,x=i;
-	// 	for(int j=0;j<(int)p.size()&&p[j]<=sqrt(x)&&!square;++j)
-	// 		if(x%p[j]==0){
-	// 			square|=x%(p[j]*p[j])==0;
-	// 			while(x%p[j]==0) x/=p[j];
-	// 			++cnt;
-	// 		}
-	// 	cnt+=x>1;
-	// 	if(square) mobius[i]=0;
-	// 	else mobius[i]=(cnt&1)?-1:1;
-	// }
 	mobius[1]=1;
 	for(int i=2;i<=maxn;++i){
 		if(!p[i]) for(int j=i;j<=maxn;j+=i) if(!p[j]) p[j]=i;
