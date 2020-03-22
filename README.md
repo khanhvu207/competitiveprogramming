@@ -43,10 +43,13 @@ This is my competitive programming repository which consists of templates, old s
 * Fast long long multiplication using c++ overflow trick  
   https://codeforces.com/blog/entry/15884
 
-* Convex hull trick
+* Convex hull trick  
   https://codeforces.com/blog/entry/63823  
   https://cp-algorithms.com/geometry/convex_hull_trick.html  
-  [Algorithm Live - Convex Hull Optimization](https://www.youtube.com/watch?v=OrH2ah4ylv4)
+  [Algorithm Live - Convex Hull Optimization](https://www.youtube.com/watch?v=OrH2ah4ylv4)  
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/Olympiad/APIO/2010/commando.cpp  
+
+
 
 
 
