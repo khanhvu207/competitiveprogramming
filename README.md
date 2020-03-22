@@ -28,6 +28,12 @@ This is my competitive programming repository which consists of templates, old s
 * SOS DP and iterate over all the subsets of a mask in O(3^n)  
   https://codeforces.com/blog/entry/45223
 
-* Speed up for Naive Algorithm  
-  https://codeforces.com/blog/entry/66279  
+* GCC optimization - speed up for Naive Algorithm  
+  https://codeforces.com/blog/entry/66279 
+
+* Expected value of square of the number of pips ~ EV(X^2)
+  https://codeforces.com/blog/entry/62792
+
+* Summation of GCD(i, j) / multiplicative function
+  
 
