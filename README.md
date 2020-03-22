@@ -13,6 +13,11 @@ This is my competitive programming repository which consists of templates, old s
 * Precompute Mobius transformation using linear sieve
   https://github.com/khanhvu207/competitiveprogramming/blob/master/VNSPOJ/raygun.cpp
 
-* Convex hull (Graham's scan)
+* Geometric convex hull (Graham's scan)
   https://github.com/khanhvu207/competitiveprogramming/blob/master/tools/convexhull.cpp
 
+* C++ bigInteger with Karatsuba multiplication and base 10^9
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/tools/bigInteger.cpp
+
+* 2D/3D geometry template
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/tools/geometry.cpp
