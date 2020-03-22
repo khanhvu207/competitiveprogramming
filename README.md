@@ -10,6 +10,9 @@ This is my competitive programming repository which consists of templates, old s
 
 ## Quick links
 
+* Mobius inversion  
+  https://codeforces.com/blog/entry/53925
+
 * Precompute Mobius transformation using linear sieve
   https://github.com/khanhvu207/competitiveprogramming/blob/master/VNSPOJ/raygun.cpp
 
@@ -21,4 +24,10 @@ This is my competitive programming repository which consists of templates, old s
 
 * 2D/3D geometry template  
   https://github.com/khanhvu207/competitiveprogramming/blob/master/tools/geometry.cpp
+
+* SOS DP and iterate over all the subsets of a mask in O(3^n)  
+  https://codeforces.com/blog/entry/45223
+
+* Speed up for Naive Algorithm  
+  https://codeforces.com/blog/entry/66279  
 
