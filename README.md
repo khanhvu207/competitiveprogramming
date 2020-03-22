@@ -11,4 +11,8 @@ This is my competitive programming repository which consists of templates, old s
 ## Quick links
 
 * Precompute Mobius transformation using linear sieve
-  [https://github.com/khanhvu207/competitiveprogramming/blob/master/VNSPOJ/raygun.cpp]
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/VNSPOJ/raygun.cpp
+
+* Convex hull (Graham's scan)
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/tools/convexhull.cpp
+
