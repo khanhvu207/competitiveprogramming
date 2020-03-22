@@ -31,9 +31,22 @@ This is my competitive programming repository which consists of templates, old s
 * GCC optimization - speed up for Naive Algorithm  
   https://codeforces.com/blog/entry/66279 
 
-* Expected value of square of the number of pips ~ EV(X^2)
+* Expected value of square of the number of pips / Calculate EV(X^2)  
   https://codeforces.com/blog/entry/62792
 
 * Summation of GCD(i, j) / multiplicative function
-  
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/VNSPOJ/gcdsum.cpp
+
+* Bitmask trie  
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/VNSPOJ/median.cpp
+
+* Fast long long multiplication using c++ overflow trick  
+  https://codeforces.com/blog/entry/15884
+
+* Convex hull trick
+  https://codeforces.com/blog/entry/63823  
+  https://cp-algorithms.com/geometry/convex_hull_trick.html  
+  [Algorithm Live - Convex Hull Optimization](https://www.youtube.com/watch?v=OrH2ah4ylv4)
+
+
 
