@@ -13,7 +13,7 @@ This is my competitive programming repository which consists of templates, old s
 * Mobius inversion  
   https://codeforces.com/blog/entry/53925
 
-* Precompute Mobius transformation
+* Precompute Mobius transformation  
   https://codeforces.com/contest/585/submission/75938637
   https://github.com/khanhvu207/competitiveprogramming/blob/master/VNSPOJ/raygun.cpp
 
