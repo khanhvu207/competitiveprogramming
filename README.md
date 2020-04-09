@@ -51,6 +51,9 @@ This is my competitive programming repository which consists of templates, old s
   https://github.com/khanhvu207/competitiveprogramming/blob/master/Olympiad/APIO/2010/commando.cpp  
 
 * Random numbers generator mt19937   
-  ```mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());```
+  ```mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());```  
+
+* Double base/modulos rolling hash  
+  https://codeforces.com/contest/1326/submission/75979019
 
 
