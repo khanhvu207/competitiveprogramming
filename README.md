@@ -54,6 +54,9 @@ This is my competitive programming repository which consists of templates, old s
   ```mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());```  
 
 * Double base/modulos rolling hash  
-  https://codeforces.com/contest/1326/submission/75979019
+  https://codeforces.com/contest/1326/submission/75979019  
+
+* Sieve of Eratosthenes (bitset) and prime factorization  
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/tools/sieve.cpp
 
 
