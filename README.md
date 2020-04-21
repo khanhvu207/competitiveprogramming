@@ -57,6 +57,9 @@ This is my competitive programming repository which consists of templates, old s
   https://codeforces.com/contest/1326/submission/75979019  
 
 * Sieve of Eratosthenes (bitset) and prime factorization  
-  https://github.com/khanhvu207/competitiveprogramming/blob/master/tools/sieve.cpp
+  https://github.com/khanhvu207/competitiveprogramming/blob/master/tools/sieve.cpp  
+
+* Extended Euclidean Algorithm (Solving Diophantine equations)  
+  https://codeforces.com/contest/801/submission/71382747
 
 
