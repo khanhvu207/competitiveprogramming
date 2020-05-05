@@ -62,7 +62,7 @@ This is my competitive programming repository which consists of templates, old s
 * Extended Euclidean Algorithm (Solving Diophantine equations)  
   https://codeforces.com/contest/801/submission/71382747  
 
-* Stirling number of 2nd kind 
+* Stirling number of 2nd kind  
   https://codeforces.com/contest/1342/submission/79092245   
 
 
