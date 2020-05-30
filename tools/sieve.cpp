@@ -20,11 +20,15 @@ ll countDivisors(ll x){
 	return res;
 }
 
+void sieve(){
+	notComposite.flip();
+	for(int i=2;i*i<MAXSIEVE;++i) if(notComposite.test(i)) for(int j=i*i;j<MAXSIEVE;j+=i) notComposite.reset(j);
+	for(int i=2;i<MAXSIEVE;++i) if(notComposite.test(i)) prime.emplace_back(i);
+}
+
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 	cout.tie(nullptr);
-	notComposite.flip();
-	for(int i=2;i*i<MAXSIEVE;++i) if(notComposite.test(i)) for(int j=i*i;j<MAXSIEVE;j+=i) notComposite.reset(j);
-	for(int i=2;i<MAXSIEVE;++i) if(notComposite.test(i)) prime.emplace_back(i);
+	sieve();
 }
