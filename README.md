@@ -8,6 +8,9 @@
 ## Description
 This is my competitive programming repository which consists of templates, old submission of online judges and ACM notebook.
 
+## Wiki
+You could find a complete version of my algorithmic templates and notes [here](https://github.com/khanhvu207/competitiveprogramming/wiki).
+
 ## Quick links
 
 * Mobius inversion  
@@ -65,5 +68,3 @@ This is my competitive programming repository which consists of templates, old s
 * Stirling number of 2nd kind  
   https://codeforces.com/contest/1342/submission/79092245   
 
-## Wiki
-You could find a complete version of my algorithmic templates and notes [here](https://github.com/khanhvu207/competitiveprogramming/wiki).
