@@ -1,9 +1,9 @@
 # competitiveprogramming
 
 ## Honors & Awards
-1. Bronze medalist at Amsterdam Algorithm Programming Preliminary 2019 (BAPC preliminary round).
-2. Honerable mention at Vietnam National Olympiad in Informatics 2019.
-3. First prize at Ho Chi Minh city Excellent student in Informatics Academic Year 2018 – 2019.
+1. Bronze medalist at the Amsterdam Algorithm Programming Preliminary 2019 (BAPC preliminary round).
+2. Honourable mention at the Vietnam National Olympiad in Informatics 2019.
+3. First prize (ranked #6) at the Ho Chi Minh city Olympiad in Informatics 2018.
 
 ## Description
 This is my competitive programming repository which consists of templates, old submission of online judges and ACM notebook.
