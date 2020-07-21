@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll int64_t
+
+int main() {
+	ios_base::sync_with_stdio(0);cin.tie(0);
+	int n,k;
+	cin>>n>>k;
+	vector<ll> a(n);
+	for(ll& x:a) cin>>x;
+	ll res=numeric_limits<ll>::max();
+	for(int i=0,j=k-1;j<n;++i,++j)
+		if(a[i]<=0&&0<=a[j]) res=min(res,a[j]-2*a[i]);
+		else if(a[j]<=0) res=min(res,-a[i]);
+		else if(0<=a[i]) res=min(res,a[j]);
+	cout<<res<<'\n';
+}
+

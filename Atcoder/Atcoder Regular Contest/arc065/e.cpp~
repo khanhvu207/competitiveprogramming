@@ -1,0 +1,87 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll int64_t
+
+const int N=1e5+5;
+const int inf=numeric_limits<int>::max();
+ll n,a,b,chebyshev;
+bool reachable[N];
+map<ll,set<pair<ll,ll>>> mpx,mpy;
+vector<pair<ll,ll>> p;
+
+void dfs(int v){
+	reachable[v]=true;
+	ll x=p[v].first;
+	ll y=p[v].second;
+	while(true){
+		auto it=mpx[x-chebyshev].lower_bound(make_pair(y-chebyshev,-1));
+		if(it==mpx[x-chebyshev].end()||it->first>y+chebyshev) break;
+		int u=it->second;
+		mpx[x-chebyshev].erase(it);
+		if(!reachable[u]) dfs(u);
+	}
+	while(true){
+		auto it=mpx[x+chebyshev].lower_bound(make_pair(y-chebyshev,-1));
+		if(it==mpx[x+chebyshev].end()||it->first>y+chebyshev) break;
+		int u=it->second;
+		mpx[x+chebyshev].erase(it);
+		if(!reachable[u]) dfs(u);
+	}
+	while(true){
+		auto it=mpy[y-chebyshev].lower_bound(make_pair(x-chebyshev,-1));
+		if(it==mpy[y-chebyshev].end()||it->first>x+chebyshev) break;
+		int u=it->second;
+		mpy[y-chebyshev].erase(it);
+		if(!reachable[u]) dfs(u);
+	}
+	while(true){
+		auto it=mpy[y+chebyshev].lower_bound(make_pair(x-chebyshev,-1));
+		if(it==mpy[y+chebyshev].end()||it->first>x+chebyshev) break;
+		int u=it->second;
+		mpy[y+chebyshev].erase(it);
+		if(!reachable[u]) dfs(u);
+	}
+}
+
+int main() {
+	ios_base::sync_with_stdio(0);cin.tie(0);
+	cin>>n>>a>>b;
+	--a,--b;
+	for(int i=0;i<n;++i){
+		ll x,y;
+		cin>>x>>y;
+		mpx[x+y].insert(make_pair(x-y,i));
+		mpy[x-y].insert(make_pair(x+y,i));
+		p.emplace_back(x+y,x-y);
+	}
+	chebyshev=max(abs(p[a].first-p[b].first),abs(p[a].second-p[b].second));
+	dfs(a);
+	ll deg=0;
+	for(int _=0;_<2;++_){
+		vector<pair<ll,ll>> s;
+		for(int i=0;i<n;++i)
+			s.emplace_back(p[i].first,p[i].second);
+		sort(s.begin(),s.end());
+		for(int i=0;i<n;++i)
+			if(reachable[i]){
+				ll tmp=0;
+				if(_==0){ // xi-x=D, -D<=yi-y<=D
+					tmp+=upper_bound(s.begin(),s.end(),pair<int,int>(p[i].first-chebyshev,p[i].second+chebyshev))
+						-lower_bound(s.begin(),s.end(),pair<int,int>(p[i].first-chebyshev,p[i].second-chebyshev));
+					tmp+=upper_bound(s.begin(),s.end(),pair<int,int>(p[i].first+chebyshev,p[i].second+chebyshev))
+						-lower_bound(s.begin(),s.end(),pair<int,int>(p[i].first+chebyshev,p[i].second-chebyshev));
+				}
+				else{ // yi-y=D, -D<xi-x<D (exclusive)
+					tmp+=lower_bound(s.begin(),s.end(),pair<int,int>(p[i].first-chebyshev,p[i].second+chebyshev))
+						-upper_bound(s.begin(),s.end(),pair<int,int>(p[i].first-chebyshev,p[i].second-chebyshev));
+					tmp+=lower_bound(s.begin(),s.end(),pair<int,int>(p[i].first+chebyshev,p[i].second+chebyshev))
+						-upper_bound(s.begin(),s.end(),pair<int,int>(p[i].first+chebyshev,p[i].second-chebyshev));
+				}
+				deg+=tmp;
+			}
+		for(int i=0;i<n;++i)
+			swap(p[i].first,p[i].second);
+	}
+	cout<<deg/2ll<<'\n';
+}
+

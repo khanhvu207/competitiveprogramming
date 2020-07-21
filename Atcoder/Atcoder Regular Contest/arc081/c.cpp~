@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll int64_t
+
+int main() {
+	ios_base::sync_with_stdio(0);cin.tie(0);
+	map<ll,int> mp;
+	int n;
+	cin>>n;
+	for(int i=0;i<n;++i){
+		int x;
+		cin>>x;
+		mp[x]++;
+	}
+	auto it=mp.end();
+	ll f=-1,s=-1;
+	do{
+		it--;
+		if(it->second>=2){
+			if(it->second>=4){
+				ll side=it->first;
+				cout<<side*side<<'\n';
+				return 0;
+			}
+			if(f==-1) f=it->first;
+			else if(s==-1) s=it->first;
+		}
+		if(~f&&~s){
+			cout<<f*s<<'\n';
+			return 0;
+		}
+	} while(it!=mp.begin());
+	cout<<0<<'\n';
+}
+

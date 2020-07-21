@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+	ios_base::sync_with_stdio(0);cin.tie(0);
+	int n;
+	cin>>n;
+	vector<ll> a(n);
+	for(ll& x:a) cin>>x;
+	ll sum=accumulate(a.begin(),a.end(),0),pf=0;
+	ll res=1e18;
+	for(int i=0;i<n-1;++i){
+		pf+=a[i];
+		res=min(res,abs(2LL*pf-sum));
+	}
+	cout<<res<<'\n';
+}
+

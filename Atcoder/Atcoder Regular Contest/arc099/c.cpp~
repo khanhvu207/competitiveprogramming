@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll int64_t
+
+int main() {
+	ios_base::sync_with_stdio(0);cin.tie(0);
+	int n,k;
+	cin>>n>>k;
+	int p=-1;
+	for(int i=0;i<n;++i){
+		int x;
+		cin>>x;
+		if(x==1) p=i;
+	}
+	int res=0;
+	int i=p,j=p;
+	while(i>0){
+		i-=k-1;
+		res++;
+	}
+	while(j<n-1){
+		j+=k-1;
+		res++;
+	}
+	cout<<res<<'\n';
+
+}
+
