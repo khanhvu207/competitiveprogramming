@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+const int N=1005;
+const int X=5005;
+int n,x[N],sum[N];
+bool b[N],w[N];
+vector<int> adj[N];
+
+void dfs(int u){
+	sum[u]=x[u];
+	for(int v:adj[u]){
+		dfs(v);
+		sum[u]+=sum[v];
+	}
+	int m=adj[u].size();
+	bool dp[m+1][X];
+	memset(dp,false,sizeof dp);
+	dp[0][0]=true;
+	for(int i=1;i<=m;++i)
+		for(int j=0;j<X;++j){
+			int v=adj[u][i-1];
+			if(w[v]&&!b[v]){
+				if(j-x[v]>=0) dp[i][j]|=dp[i-1][j-x[v]];
+			}
+			if(!w[v]&&b[v])
+				dp[i][j]|=dp[i-1][j];
+			if(w[v]&&b[v]){
+				dp[i][j]|=dp[i-1][j];
+				if(j-x[v]>=0) dp[i][j]|=dp[i-1][j-x[v]];
+			}
+		}
+	for(int i=0;i<X;++i)
+		if(dp[m][i]){
+			if(i<=x[u]) w[u]=true;
+			if(sum[u]-i<=x[u]) b[u]=true;
+		}
+	cerr<<u<<' '<<w[u]<<' '<<b[u]<<'\n';
+	if(!w[u]&&!b[u]){
+		cout<<"IMPOSSIBLE\n";
+		exit(0);
+	}
+}
+
+int main() {
+	ios_base::sync_with_stdio(0);cin.tie(0);
+	cin>>n;
+	for(int i=2;i<=n;++i){
+		int v;
+		cin>>v;
+		adj[v].push_back(i);
+	}
+	for(int i=1;i<=n;++i)
+		cin>>x[i];
+	dfs(1);
+	cout<<"POSSIBLE\n";
+}
+
+
