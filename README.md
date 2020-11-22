@@ -1,15 +1,16 @@
 # competitiveprogramming
 
-## Honors & Awards
-1. Bronze medalist at the Amsterdam Algorithm Programming Preliminary 2019 (BAPC preliminary round).
-2. Honourable mention at the Vietnam National Olympiad in Informatics 2019.
-3. First prize (ranked #6) at the Ho Chi Minh city Olympiad in Informatics 2018.
-
 ## Description
 This is my competitive programming repository which consists of templates, old submission of online judges and ACM notebook.
 
 ## Wiki
 You could find a complete version of my algorithmic templates and notes [here](https://github.com/khanhvu207/competitiveprogramming/wiki).
+
+## Honors & Awards
+1. Silver medalist at the Amsterdam Algorithm Programming Preliminary 2020 (BAPC preliminary round).  
+2. Bronze medalist at the Amsterdam Algorithm Programming Preliminary 2019 (BAPC preliminary round).
+3. Honourable mention at the Vietnam National Olympiad in Informatics 2019.
+4. First prize (ranked #6) at the Ho Chi Minh city Olympiad in Informatics 2018.
 
 ## Quick links
 
