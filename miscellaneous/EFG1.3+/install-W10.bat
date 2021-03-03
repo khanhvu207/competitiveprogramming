@@ -1,1 +1,0 @@
-runas /user:user "EFG1.3+W10-setup.EXE"

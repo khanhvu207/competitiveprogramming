@@ -1,1 +1,0 @@
-runas /user:user "C:\Program Files\EFG Group\EFG1.3+XP2\EFG1.3+XP2.exe" 

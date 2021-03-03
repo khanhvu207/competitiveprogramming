@@ -1,1 +1,0 @@
-runas /user:user "EFG1.3+XP2-setup.EXE"
