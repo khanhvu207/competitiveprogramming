@@ -30,19 +30,21 @@ def makeTest(data, inp_folder, out_folder):
         with open(os.path.join(out_folder, f'out{i}.txt'), 'w') as f:
             f.write(t['output'])
 
-def makeEnv(contest, problem, data):
-    if contest in os.listdir():
-        import shutil
-        shutil.rmtree(contest, ignore_errors=True)
+def makeEnv(contest, problem, data, has_tests):
+    if not contest in os.listdir():
+    	os.mkdir(contest)
+        # import shutil
+        # shutil.rmtree(contest, ignore_errors=True)
 
     prob_dir = os.path.join(contest, problem)
     test_inp_dir = os.path.join(prob_dir, 'input')
     test_out_dir = os.path.join(prob_dir, 'output')
-    os.mkdir(contest)
+    
     os.mkdir(prob_dir)
     os.mkdir(test_inp_dir)
     os.mkdir(test_out_dir)
-    makeTest(data, test_inp_dir, test_out_dir)
+    if has_tests:
+    	makeTest(data, test_inp_dir, test_out_dir)
 
     from shutil import copyfile
     copyfile('C:\\Users\\khanh\\OneDrive\\CP\\templates\\main.cpp', os.path.join(prob_dir, f'{problem}.cpp'))
@@ -50,9 +52,17 @@ def makeEnv(contest, problem, data):
 
 
 if __name__ == "__main__":
-    contest_name = sys.argv[1]
-    prob_name = sys.argv[2]
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--contest_name')
+	parser.add_argument('--prob_name')
+	parser.add_argument('--has_tests', default=1)
+	args = parser.parse_args()
 
-    runServer(addr='127.0.0.1', port=10043)
-    makeEnv(contest_name, prob_name, json_data)
+	contest_name = args.contest_name
+	prob_name = args.prob_name
+	has_tests = int(args.has_tests)
+
+	if has_tests:
+		runServer(addr='127.0.0.1', port=10043)
+	makeEnv(contest_name, prob_name, json_data, has_tests)
 
