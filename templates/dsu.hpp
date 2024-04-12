@@ -8,15 +8,15 @@ struct DSU
 		iota(p.begin(), p.end(), 0);
 	}
 
-	int getroot(int u)
+	int getRoot(int u)
 	{
-		return p[u] == u ? u : p[u] = getroot(p[u]);
+		return p[u] == u ? u : p[u] = getRoot(p[u]);
 	}
 
 	bool merge(int u, int v)
 	{
-		u = getroot(u);
-		v = getroot(v);
+		u = getRoot(u);
+		v = getRoot(v);
 		if (u == v) return false;
 		if (r[u] > r[v]) r[u] += r[v], p[v] = u;
 		else r[v] += r[u], p[u] = v;
