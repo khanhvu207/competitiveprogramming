@@ -40,31 +40,7 @@ const char el = '\n';
 const bool is_multitest = false;
 
 void solve() {
-    int n, m;
-    cin >> n >> m;
-    vector<bool> marked(n+1, false);
-
-    for (int i = 0; i < m; ++i) {
-        int x;
-        cin >> x;
-        --x;
-        marked[x] = true;
-    } 
-
-    if (marked[0] || marked[n-1]) {
-        cout << -1 << el;
-        return;
-    }
-
-    vector<int> res(n);
-    iota(res.begin(), res.end(), 1);
-    for (int i = 1; i < n - 1; ++i) {
-        if (marked[i]) {
-            swap(res[i], res[i+1]);
-        }
-    }
-    for (int x : res) cout << x << ' ';
-    cout << el;
+    
 }
 
 int main() {
