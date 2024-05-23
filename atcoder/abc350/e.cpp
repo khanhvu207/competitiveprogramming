@@ -4,7 +4,7 @@
 using namespace std;
 
 #ifdef LOCAL
-#include "debug.h"
+#include "../../debug.h"
 #else
 #define debug(...) 42
 #endif
@@ -39,8 +39,28 @@ using ld = long double;
 const char el = '\n';
 const bool is_multitest = false;
 
+
 void solve() {
-    
+    ll n, a;
+    ld x, y;
+    cin >> n >> a >> x >> y;
+
+    unordered_map<ll, ld> cache;
+    function<ld(ll)> f = [&](ll cur) {
+        if (cur == 0) return (ld)0.0;
+        if (cache.find(cur) != cache.end()) return cache[cur];
+        ld& res = cache[cur];
+        ld ev_opt1 = x + f(cur / a);
+        ld ev_opt2 = y * 6.0;
+        for (ll i = 2; i <= 6; ++i) {
+            ev_opt2 += f(cur / i);
+        }
+        ev_opt2 /= 5.0;
+        res = min(ev_opt1, ev_opt2); 
+        return res;
+    };
+
+    cout << fixed << setprecision(9) << f(n) << el;
 }
 
 int main() {

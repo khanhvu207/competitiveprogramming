@@ -4,7 +4,7 @@
 using namespace std;
 
 #ifdef LOCAL
-#include "debug.h"
+#include "../../debug.h"
 #else
 #define debug(...) 42
 #endif
@@ -39,8 +39,38 @@ using ld = long double;
 const char el = '\n';
 const bool is_multitest = false;
 
+
 void solve() {
+    ll a, b, c, d;
+    cin >> a >> b >> c >> d;
+    const ll even[4] = {2LL, 1LL, 0LL, 1LL};
+    const ll odd[4]  = {1LL, 2LL, 1LL, 0LL};
+
+    ll w = c - a;
+    ll h = d - b;
+    ll res = 4LL * (w / 4LL) * h;
     
+    ll t = w % 4LL;
+    const ll magic = 17179869184LL;
+    
+    a = (a + magic) % 4LL;
+    ll evenStripe = 0LL;
+    ll oddStripe = 0LL;
+
+    for (ll i = 0; i < t; ++i) {
+        evenStripe += even[(a + i) % 4LL];
+    }
+
+    for (ll i = 0; i < t; ++i) {
+        oddStripe += odd[(a + i) % 4LL];
+    }
+
+    res += (evenStripe + oddStripe) * (h / 2LL);
+    if (h & 1LL) {
+        res += (abs(b) & 1LL) ? oddStripe : evenStripe;
+    }
+
+    cout << res << el;
 }
 
 int main() {

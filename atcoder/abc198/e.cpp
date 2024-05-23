@@ -4,7 +4,7 @@
 using namespace std;
 
 #ifdef LOCAL
-#include "debug.h"
+#include "../../debug.h"
 #else
 #define debug(...) 42
 #endif
@@ -40,7 +40,42 @@ const char el = '\n';
 const bool is_multitest = false;
 
 void solve() {
-    
+    int n;
+    cin >> n;
+    vector<int> color(n);
+    for (int &x : color) cin >> x;
+    vector<vector<int>> g(n);
+    for (int i = 0; i < n-1; ++i) {
+        int u, v;
+        cin >> u >> v;
+        --u, --v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+
+    const int MAXC = 100005;
+    vector<int> countColor(MAXC, 0);
+    vector<int> goodVertices;
+    function<void(int, int)> dfs = [&](int u, int p) {
+        if (countColor[color[u]] == 0) {
+            goodVertices.push_back(u);
+        }
+        
+        ++countColor[color[u]];
+        for (int v : g[u]) {
+            if (v != p) {
+                dfs(v, u);
+            }
+        }
+
+        --countColor[color[u]];
+    };
+
+    dfs(0, -1);
+    ranges::sort(goodVertices);
+    for (int x : goodVertices) {
+        cout << x + 1 << el;
+    }
 }
 
 int main() {

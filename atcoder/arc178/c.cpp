@@ -4,7 +4,7 @@
 using namespace std;
 
 #ifdef LOCAL
-#include "debug.h"
+#include "../../debug.h"
 #else
 #define debug(...) 42
 #endif
@@ -40,7 +40,31 @@ const char el = '\n';
 const bool is_multitest = false;
 
 void solve() {
-    
+    int n;
+    ll l;
+    cin >> n >> l;
+    vector<ll> a(n);
+    for (ll &x : a) cin >> x;
+
+    for (const ll &x : a) {
+        if ((x & 1) && (l & 1)) {
+            cout << -1 << el;
+            continue;
+        }
+
+        // x <= b * (l / 2) * (l - l / 2)
+        ll div = (l / 2LL) * (l - l / 2LL);
+        ll b = (x + div - 1LL) / div;
+        ll hi = b * div;
+        ll lo = b * (l - 1LL);
+        // debug(x, b, lo, hi);
+        if (lo > x) {
+            cout << -1 << el;
+        }
+        else {
+            cout << b << el;
+        }
+    }
 }
 
 int main() {

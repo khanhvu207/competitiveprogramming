@@ -4,7 +4,7 @@
 using namespace std;
 
 #ifdef LOCAL
-#include "debug.h"
+#include "../../debug.h"
 #else
 #define debug(...) 42
 #endif
@@ -37,10 +37,36 @@ using namespace utils;
 using ll = long long;
 using ld = long double;
 const char el = '\n';
-const bool is_multitest = false;
+const bool is_multitest = true;
+
+ll fpow(ll a, ll p, ll MOD) {
+    ll ret = 1LL;
+    while (p) {
+        if (p & 1LL) {
+            ret = ret * a % MOD;
+        }
+        a = a * a % MOD;
+        p >>= 1LL;
+    }
+    return ret;
+}
 
 void solve() {
+    ll n, m, k;
+    cin >> n >> m >> k;
     
+    if (n >= m) {
+        ll p = max(n - k - 1LL, 0LL) / (m - k);
+        n -= p * (m - k);
+        if (n == m) n = k;
+    }
+    
+    if (n == m-1LL && k == m-1LL) {
+        cout << 0 << el;
+        return;
+    }
+
+    cout << fpow(2LL, n, 10LL) << el;
 }
 
 int main() {
