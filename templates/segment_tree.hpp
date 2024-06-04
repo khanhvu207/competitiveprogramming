@@ -2,29 +2,25 @@ namespace ds {
 struct data {
     int x;
 
-    data(int new_x) {
-        x = new_x;
-    }
+    data(int new_x) { x = new_x; }
 
     // Default constructor
-    data() {
-        x = 0;
-    }
+    data() { x = 0; }
 };
 
-data combine(const data& left, const data& right) {
-    // Implement this
-}
-
 template <typename T>
-class segmentTree {
+class lazySegmentTree {
     int sz;
     vector<T> tree;
+    vector<T> lazy;
+
+    T combine(const T& a, const T& b) { return max(a, b); }
 
    public:
-    segmentTree(int n) {
+    lazySegmentTree(int n) {
         sz = n;
-        tree.resize(4 * sz);
+        tree.resize(4 * sz, 0);
+        lazy.resize(4 * sz, 0);
     }
 
     void build(const vector<T>& arr, int v, int tl, int tr) {
@@ -38,30 +34,39 @@ class segmentTree {
         }
     }
 
-    void update(int v, int tl, int tr, int pos, T val) {
-        if (tl == tr) {
-            tree[v] = val;
+    void push(int v) {
+        tree[v << 1] += lazy[v];
+        lazy[v << 1] += lazy[v];
+        tree[v << 1 | 1] += lazy[v];
+        lazy[v << 1 | 1] += lazy[v];
+        lazy[v] = 0;
+    }
+
+    void update(int v, int tl, int tr, int l, int r, T val) {
+        if (l > r) return;
+        if (tl == l && r == tr) {
+            tree[v] += val;
+            lazy[v] += val;
         } else {
+            push(v);
             int tm = (tl + tr) >> 1;
-            if (pos <= tm) {
-                update(v << 1, tl, tm, pos, val);
-            } else {
-                update(v << 1 | 1, tm + 1, tr, pos, val);
-            }
+            update(v << 1, tl, tm, l, min(r, tm), val);
+            update(v << 1 | 1, tm + 1, tr, max(l, tm + 1), r, val);
             tree[v] = combine(tree[v << 1], tree[v << 1 | 1]);
         }
     }
 
     T query(int v, int tl, int tr, int l, int r) {
         if (l > r) {
-            return T();
+            return 0;
         }
         if (tl == l && r == tr) {
             return tree[v];
         }
+        push(v);
         int tm = (tl + tr) >> 1;
-        data leftRet = query(v << 1, tl, tm, l, min(r, tm));
-        data rightRet = query(v << 1 | 1, tm + 1, tr, max(l, tm + 1), r);
+        T leftRet = query(v << 1, tl, tm, l, min(r, tm));
+        T rightRet = query(v << 1 | 1, tm + 1, tr, max(l, tm + 1), r);
         return combine(leftRet, rightRet);
     }
 };
