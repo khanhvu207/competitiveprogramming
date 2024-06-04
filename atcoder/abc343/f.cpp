@@ -92,12 +92,12 @@ data combine(const data& left, const data& right) {
 }
 
 template <typename T>
-class segmentTree {
+class lazySegmentTree {
     int sz;
     vector<T> tree;
 
    public:
-    segmentTree(int n) {
+    lazySegmentTree(int n) {
         sz = n;
         tree.resize(4 * sz);
     }
@@ -153,7 +153,7 @@ void solve() {
         a[i] = ds::data(x, 0);
     }
 
-    ds::segmentTree<ds::data> st(n);
+    ds::lazySegmentTree<ds::data> st(n);
     st.build(a, 1, 0, n - 1);
 
     while (q--) {
