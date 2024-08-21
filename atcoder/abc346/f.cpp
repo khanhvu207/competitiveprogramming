@@ -4,24 +4,36 @@
 using namespace std;
 
 #ifdef LOCAL
-#include "debug.h"
+#include "../../debug.h"
 #else
 #define debug(...) 42
 #endif
 
 namespace utils {
-template <typename T>
-void setMax(T& target, const T& value) {
-    if (value > target) {
-        target = value;
+template <typename T, typename... Args>
+void setValues(const T& value, T& first, Args&... args) {
+    first = value;
+    if constexpr (sizeof...(args) > 0) {
+        setValues(value, args...);
     }
 }
 
 template <typename T>
-void setMin(T& target, const T& value) {
+bool chMax(T& target, const T& value) {
+    if (value > target) {
+        target = value;
+        return true;
+    }
+    return false;
+}
+
+template <typename T>
+bool chMin(T& target, const T& value) {
     if (value < target) {
         target = value;
+        return true;
     }
+    return false;
 }
 }  // namespace utils
 using namespace utils;
@@ -30,20 +42,10 @@ using ll = long long;
 using ld = long double;
 const char el = '\n';
 
+
 void solve() {
-    vector dp(4, vector<int>(7, 0));
-    for (int i = 1; i <= 6; ++i) {
-        dp[0][i] = 1;
-    }
-    for (int i = 1; i < 4; ++i) {
-        for (int j = 1; j <= 6; ++j) {
-            for (int k = j; k <= 6; ++k) {
-                dp[i][j] += dp[i-1][k];
-            }
-        }
-    }
-    cout << accumulate(dp[3].begin(), dp[3].end(), 0) << el;
-}
+    
+} 
 
 const bool is_multitest = false;
 

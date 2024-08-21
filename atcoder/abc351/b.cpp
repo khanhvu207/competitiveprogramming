@@ -2,26 +2,32 @@
 
 #include <ranges>
 using namespace std;
+// #pragma GCC optimize("Ofast")
+// #pragma GCC target("avx2")
 
 #ifdef LOCAL
-#include "debug.h"
+#include "../../debug.h"
 #else
 #define debug(...) 42
 #endif
 
 namespace utils {
 template <typename T>
-void setMax(T& target, const T& value) {
+bool chMax(T& target, const T& value) {
     if (value > target) {
         target = value;
+        return true;
     }
+    return false;
 }
 
 template <typename T>
-void setMin(T& target, const T& value) {
+bool chMin(T& target, const T& value) {
     if (value < target) {
         target = value;
+        return true;
     }
+    return false;
 }
 }  // namespace utils
 using namespace utils;
@@ -30,22 +36,30 @@ using ll = long long;
 using ld = long double;
 const char el = '\n';
 
+
 void solve() {
-    vector dp(4, vector<int>(7, 0));
-    for (int i = 1; i <= 6; ++i) {
-        dp[0][i] = 1;
+    int n;
+    cin >> n;
+    vector<string> a(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
     }
-    for (int i = 1; i < 4; ++i) {
-        for (int j = 1; j <= 6; ++j) {
-            for (int k = j; k <= 6; ++k) {
-                dp[i][j] += dp[i-1][k];
+    vector<string> b(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> b[i];
+    }
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (a[i][j] != b[i][j]) {
+                cout << i + 1 << ' ' << j + 1 << el;
+                return;
             }
-        }
+        } 
     }
-    cout << accumulate(dp[3].begin(), dp[3].end(), 0) << el;
-}
+} 
 
 const bool is_multitest = false;
+
 
 int main() {
     ios_base::sync_with_stdio(false);

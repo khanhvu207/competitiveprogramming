@@ -3,10 +3,9 @@ class fenwick {
    public:
     vector<T> a;
     int sz;
-    const T inf = numeric_limits<T>::max();
-    fenwick(int n) {
+    fenwick(int n, T init) {
         sz = n;
-        a.resize(n, -inf);
+        a.resize(n, init);
     }
 
     void update(int idx, T val) {
@@ -19,6 +18,31 @@ class fenwick {
         T res = -inf;
         for (; idx >= 0; idx = (idx & (idx + 1)) - 1) {
             res = max(res, a[idx]);
+        }
+        return res;
+    }
+};
+
+template <typename T>
+class fenwick {
+   public:
+    vector<T> a;
+    int sz;
+    fenwick(int n, T init) {
+        sz = n;
+        a.resize(n, init);
+    }
+
+    void update(int idx, T val) {
+        for (; idx >= 0; idx = (idx & (idx + 1)) - 1) {
+            a[idx] += val;
+        }
+    }
+
+    T get(int idx) {
+        T res = 0;
+        for (; idx < sz; idx = idx | (idx + 1)) {
+            res += a[idx];
         }
         return res;
     }
