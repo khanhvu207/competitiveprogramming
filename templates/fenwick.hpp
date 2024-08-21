@@ -1,48 +1,48 @@
 template <typename T>
-class fenwick {
+class fenwickUp {
    public:
     vector<T> a;
     int sz;
-    fenwick(int n, T init) {
+    fenwickUp(int n, T init) {
         sz = n;
         a.resize(n, init);
     }
 
     void update(int idx, T val) {
-        for (; idx < sz; idx = idx | (idx + 1)) {
-            a[idx] = max(a[idx], val);
+        for (; idx >= 0; idx = (idx & (idx + 1)) - 1) {
+            chMax(a[idx], val);
         }
     }
 
-    T get(int idx) {
-        T res = -inf;
-        for (; idx >= 0; idx = (idx & (idx + 1)) - 1) {
-            res = max(res, a[idx]);
+    T get(int idx, T def) {
+        T res = def;
+        for (; idx < sz; idx = idx | (idx + 1)) {
+            chMax(res, a[idx]);
         }
         return res;
     }
 };
 
 template <typename T>
-class fenwick {
+class fenwickDown {
    public:
     vector<T> a;
     int sz;
-    fenwick(int n, T init) {
+    fenwickDown(int n, T init) {
         sz = n;
         a.resize(n, init);
     }
 
     void update(int idx, T val) {
-        for (; idx >= 0; idx = (idx & (idx + 1)) - 1) {
-            a[idx] += val;
+        for (; idx < sz; idx = idx | (idx + 1)) {
+            chMax(a[idx], val);
         }
     }
 
-    T get(int idx) {
-        T res = 0;
-        for (; idx < sz; idx = idx | (idx + 1)) {
-            res += a[idx];
+    T get(int idx, T def) {
+        T res = def;
+        for (; idx >= 0; idx = (idx & (idx + 1)) - 1) {
+            chMax(res, a[idx]);
         }
         return res;
     }
