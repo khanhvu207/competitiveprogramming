@@ -3,6 +3,8 @@
         "vector": "cpp",
         "iosfwd": "cpp",
         "ios": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "iostream": "cpp",
+        "functional": "cpp"
     }
 }
