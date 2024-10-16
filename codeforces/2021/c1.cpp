@@ -34,6 +34,28 @@ const char el = '\n';
 
 
 void solve() {
+    int n, m, q;
+    cin >> n >> m >> q;
+    vector<int> a(n);
+    for (int& x : a) cin >> x;
+
+    set<int> vst;
+    vector<int> b;
+    for (int i = 0; i < m; ++i) {
+        int x;
+        cin >> x;
+        if (vst.find(x) == vst.end()) {
+            b.push_back(x);
+        }
+        vst.insert(x);
+    }
+    
+    bool ok = true;
+    for (int i = 0; i < (int)b.size(); ++i) {
+        ok &= b[i] == a[i];
+    }
+
+    cout << (ok ? "YA" : "TIDAK") << el;
 }
 
 const bool is_multitest = true;

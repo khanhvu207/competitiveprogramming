@@ -34,6 +34,30 @@ const char el = '\n';
 
 
 void solve() {
+    int n, x;
+    cin >> n >> x;
+    vector<int> a(n);
+    for (int &x : a) cin >> x;
+    ranges::sort(a);
+
+    int j = 0;
+    map<int, int> cnt;
+    for (int i = 0; i < n + 1; ++i) {
+        while (j < n and a[j] < i) {
+            cnt[a[j] % x] += 1;
+            ++j;
+        }
+        if (j < n and a[j] == i) {
+            ++j;
+        }
+        else {
+            if (cnt[i % x] == 0) {
+                cout << i << el;
+                return;
+            }
+            cnt[i % x] -= 1;
+        }
+    }
 }
 
 const bool is_multitest = true;

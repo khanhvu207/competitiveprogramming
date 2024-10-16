@@ -2,7 +2,7 @@
 using namespace std;
 
 #ifdef LOCAL
-#include "../../debug.h"
+#include "../debug.h"
 #else
 #define debug(...) 42
 #endif
@@ -34,6 +34,8 @@ const char el = '\n';
 
 
 void solve() {
+    vector<double> p(12);
+    
 }
 
 const bool is_multitest = true;

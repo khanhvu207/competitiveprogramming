@@ -1,8 +1,10 @@
 #include <bits/stdc++.h>
+
+#include <ranges>
 using namespace std;
 
 #ifdef LOCAL
-#include "../../debug.h"
+#include "../debug.h"
 #else
 #define debug(...) 42
 #endif
@@ -32,11 +34,27 @@ using ll = long long;
 using ld = long double;
 const char el = '\n';
 
-
 void solve() {
+    int n;
+    cin >> n;
+    vector<pair<int, int>> b;
+    for (int i = 0; i < n; ++i) {
+        int v;
+        cin >> v;
+        b.emplace_back(v, i);
+    }
+    ranges::sort(b);
+
+    int res = 0;
+    for (int i = 1; i < n; ++i) {
+        if (b[i].second < b[i-1].second) {
+            ++res;
+        }
+    }
+    cout << res + 1 << el;
 }
 
-const bool is_multitest = true;
+const bool is_multitest = false;
 
 int main() {
     ios_base::sync_with_stdio(false);
