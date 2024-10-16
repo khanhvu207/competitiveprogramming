@@ -14,7 +14,7 @@
             "compilerPath": "/opt/homebrew/bin/g++-14",
             "cStandard": "c23",
             "cppStandard": "c++23",
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "gcc-arm64"
         }
     ],
     "version": 4

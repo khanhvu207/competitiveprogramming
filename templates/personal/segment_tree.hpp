@@ -14,7 +14,10 @@ class lazySegmentTree {
     vector<T> tree;
     vector<T> lazy;
 
-    T combine(const T& a, const T& b) { return max(a, b); }
+    T combine(const T& a, const T& b) { 
+        // return max(a, b); 
+        // Implement this
+    }
 
    public:
     lazySegmentTree(int n) {
@@ -58,7 +61,7 @@ class lazySegmentTree {
 
     T query(int v, int tl, int tr, int l, int r) {
         if (l > r) {
-            return 0;
+            return 0; // Be careful of this null return!
         }
         if (tl == l && r == tr) {
             return tree[v];
