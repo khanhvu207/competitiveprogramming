@@ -30,19 +30,8 @@ using ll = long long;
 using ld = long double;
 const char el = '\n';
 
-void solve() {
-    vector dp(4, vector<int>(7, 0));
-    for (int i = 1; i <= 6; ++i) {
-        dp[0][i] = 1;
-    }
-    for (int i = 1; i < 4; ++i) {
-        for (int j = 1; j <= 6; ++j) {
-            for (int k = j; k <= 6; ++k) {
-                dp[i][j] += dp[i-1][k];
-            }
-        }
-    }
-    cout << accumulate(dp[3].begin(), dp[3].end(), 0) << el;
+void solve() { 
+   
 }
 
 const bool is_multitest = false;

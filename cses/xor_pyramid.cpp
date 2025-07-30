@@ -10,14 +10,6 @@ using namespace std;
 #endif
 
 namespace utils {
-template <typename T, typename... Args>
-void setValues(const T& value, T& first, Args&... args) {
-    first = value;
-    if constexpr (sizeof...(args) > 0) {
-        setValues(value, args...);
-    }
-}
-
 template <typename T>
 bool chMax(T& target, const T& value) {
     if (value > target) {
@@ -47,17 +39,18 @@ void solve() {
     int n;
     cin >> n;
     vector<int> a(n);
-    for (int &x : a) cin >> x;
-    if (n & 1) {
-        cout << (a[0] ^ a[n-1]) << el;
+    for (int& x : a) cin >> x;
+
+    while ((int)a.size() > 1) {
+        int k = 0;
+        while ((1 << (k + 1)) < (int)a.size()) ++k;
+        vector<int> next_a;
+        for (int i = 0; i + (1 << k) < (int)a.size(); ++i) {
+            next_a.push_back(a[i] ^ a[i + (1 << k)]);
+        } 
+        a = next_a;
     }
-    else {
-        int s = 0;
-        for (int x : a) {
-            s ^= x;
-        }
-        cout << s << el;
-    }
+    cout << a[0] << el;
 }
 
 int main() {

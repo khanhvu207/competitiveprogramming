@@ -1,20 +1,25 @@
-int n = r * c;
-const int INF = numeric_limits<int>::max();
-function<void(int, vector<int>&, vector<int>&)> dijkstra = [&](int st, vector<int>& d, vector<int>& p) {
-    d.assign(n, INF);
-    p.assign(n, -1);
-    d[st] = 0;
-    priority_queue q(greater<>{}, vector<pair<int, int>>{});
-    q.emplace(0, st);
+#include <queue>
+#include <vector>
+using namespace std;
+
+template <class T>
+vector<T> shortest_path(const vector<vector<pair<int, T>>> &G, int s) {
+    vector<T> d((int)G.size(), numeric_limits<T>::max());
+    priority_queue q(greater<>{}, vector<pair<T, int>>{});
+    d[s] = 0;
+    q.emplace(d[s], s);
     while (!q.empty()) {
-        auto [du, u] = q.top();
+        auto [d_u, u] = q.top();
         q.pop();
-        if (du != d[u]) continue;
-        for (auto [v, w] : g[u]) {
-            if (chMin(d[v], d[u] + w)) {
-                p[v] = u;
+        if (d_u != d[u]) {
+            continue;
+        }
+        for (auto [v, w] : G[u]) {
+            if (d[v] > d[u] + w) {
+                d[v] = d[u] + w;
                 q.emplace(d[v], v);
             }
         }
     }
-};
+    return d;
+}

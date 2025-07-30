@@ -34,8 +34,25 @@ const char el = '\n';
 
 
 void solve() {
-    vector<double> p(12);
-    
+    // A = 0, B = 1
+    int n = 10;
+    vector<vector<int>> dp(n+5, vector<int>(n+5, 0));
+    dp[0][0] = 1;
+
+    for (int i = 0; i <= n; ++i) {
+        for (int j = 0; j <= n; ++j) {
+            if (i - 1 >= 0) {
+                dp[i][j] += dp[i-1][j];
+            }
+            if (j - 1 >= 0) {
+                dp[i][j] += dp[i][j-1];
+            }
+        }
+    }
+
+    for (int i = 1; i <= 10; ++i) {
+        cout << dp[i][i] << ", ";
+    }
 }
 
 const bool is_multitest = true;
