@@ -40,7 +40,7 @@ vector<bool> send_packet(vector<bool> A);
 
 void send_message(vector<bool> M, vector<bool> C) {
     int S = (int)M.size();
-    
+
     // Idea 1: Communicate C with <= 31 packets
     vector<int> goodPos;
     int badPos = 0;
@@ -49,22 +49,19 @@ void send_message(vector<bool> M, vector<bool> C) {
             if (C[i] == false) {
                 send_packet(vector<bool>(31, true));
                 goodPos.push_back(i);
-            }
-            else {
+            } else {
                 send_packet(vector<bool>(31, false));
                 ++badPos;
             }
             ++i;
-        }
-        else {
+        } else {
             vector<bool> P(31, false);
             vector<int> newGoodPos;
             for (int j : goodPos) {
                 if (C[i] == false) {
                     P[j] = true;
                     newGoodPos.push_back(i);
-                }
-                else {
+                } else {
                     ++badPos;
                 }
                 ++i;
@@ -86,7 +83,7 @@ void send_message(vector<bool> M, vector<bool> C) {
             }
             ++j;
         }
-    } 
+    }
     send_packet(P);
 
     for (int i = 0; i < S;) {
@@ -117,22 +114,19 @@ vector<bool> receive_message(vector<vector<bool>> R) {
             if (cnt >= 16) {
                 C[i] = false;
                 goodPos.push_back(i);
-            }
-            else {
+            } else {
                 C[i] = true;
                 ++badPos;
             }
             ++id;
             ++i;
-        }
-        else {
+        } else {
             vector<int> newGoodPos;
             for (int j : goodPos) {
                 if (R[id][j] == true) {
                     C[i] = false;
                     newGoodPos.push_back(i);
-                }
-                else {
+                } else {
                     C[i] = true;
                     ++badPos;
                 }
