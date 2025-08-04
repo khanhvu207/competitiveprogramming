@@ -1,5 +1,5 @@
 template <typename T>
-class binary_trie {
+class BinaryTrie {
     struct trie {
         trie* bit[2];
         int cnt;
@@ -13,8 +13,8 @@ class binary_trie {
 
    public:
     trie* root = new trie();
-    binary_trie() {}
-    binary_trie(int n) : nb(n) {}
+    BinaryTrie() {}
+    BinaryTrie(int n) : nb(n) {}
 
     void insert(T x) {
         trie* p = root;
