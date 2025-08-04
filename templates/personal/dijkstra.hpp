@@ -1,5 +1,7 @@
 #include <queue>
 #include <vector>
+
+namespace GraphAlgo {
 using namespace std;
 
 template <class T>
@@ -23,3 +25,4 @@ vector<T> shortest_path(const vector<vector<pair<int, T>>> &G, int s) {
     }
     return d;
 }
+}  // namespace GraphAlgo

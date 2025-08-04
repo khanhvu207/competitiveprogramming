@@ -1,6 +1,10 @@
-struct DSU {
+#include <bits/stdc++.h>
+
+namespace DataStructure {
+using namespace std;
+struct dsu {
     vector<int> r, p;
-    DSU(int n) {
+    dsu(int n) {
         r.resize(n, 1);
         p.resize(n);
         iota(p.begin(), p.end(), 0);
@@ -21,3 +25,4 @@ struct DSU {
         return true;
     }
 };
+}  // namespace DataStructure

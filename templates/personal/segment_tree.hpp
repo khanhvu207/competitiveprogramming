@@ -1,26 +1,21 @@
-namespace ds {
-struct data {
-    int x;
+#include <bits/stdc++.h>
 
-    data(int new_x) { x = new_x; }
-
-    // Default constructor
-    data() { x = 0; }
-};
-
+namespace DataStructure {
+using namespace std;
 template <typename T>
-class lazySegmentTree {
+class LazySegmentTree {
     int sz;
     vector<T> tree;
     vector<T> lazy;
 
-    T combine(const T& a, const T& b) { 
-        // return max(a, b); 
+    T combine(const T& a, const T& b) {
+        // return max(a, b);
         // Implement this
+        throw runtime_error("Combine function not implemented");
     }
 
    public:
-    lazySegmentTree(int n) {
+    LazySegmentTree(int n) {
         sz = n;
         tree.resize(4 * sz, 0);
         lazy.resize(4 * sz, 0);
@@ -61,7 +56,7 @@ class lazySegmentTree {
 
     T query(int v, int tl, int tr, int l, int r) {
         if (l > r) {
-            return 0; // Be careful of this null return!
+            return 0;  // Be careful of this null return!
         }
         if (tl == l && r == tr) {
             return tree[v];
@@ -73,4 +68,4 @@ class lazySegmentTree {
         return combine(leftRet, rightRet);
     }
 };
-}  // namespace ds
+}  // namespace DataStructure

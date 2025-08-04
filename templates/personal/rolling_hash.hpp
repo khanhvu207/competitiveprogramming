@@ -1,4 +1,8 @@
-namespace stringAlgo {
+#include <bits/stdc++.h>
+
+namespace StringAlgo {
+using namespace std;
+using ll = long long;
 const int N = 1e6 + 5;
 const ll MOD = 1e9 + 9;
 const ll MOD2 = 998244353;
@@ -75,4 +79,4 @@ ll DoubleRollingHash::base2;
 vector<ll> DoubleRollingHash::pb;
 vector<ll> DoubleRollingHash::pb2;
 bool DoubleRollingHash::initialized = false;
-}  // namespace stringAlgo
+}  // namespace StringAlgo

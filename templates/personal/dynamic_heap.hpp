@@ -1,7 +1,13 @@
+#include <bits/stdc++.h>
+
+namespace DataStructure {
+using namespace std;
+
+template <class T>
 struct dynamic_heap {
-    int summax, summin;
-    priority_queue<int> heapmax;
-    priority_queue<int, vector<int>, greater<int>> heapmin;
+    T summax, summin;
+    priority_queue<T> heapmax;
+    priority_queue<T, vector<T>, greater<T>> heapmin;
 
     void clear_heaps() {
         summax = summin = 0;
@@ -9,14 +15,14 @@ struct dynamic_heap {
         while (!heapmin.empty()) heapmin.pop();
     }
 
-    int get_median(int x) {
+    T get_median(T x) {
         if (heapmax.empty() && heapmin.empty()) {
             heapmax.push(x);
             summax += x;
             return x;
         }
 
-        int median = heapmax.size() >= heapmin.size() ? heapmax.top() : heapmin.top();
+        T median = heapmax.size() >= heapmin.size() ? heapmax.top() : heapmin.top();
         if (x < median)
             heapmax.push(x), summax += x;
         else
@@ -36,3 +42,4 @@ struct dynamic_heap {
         return heapmax.size() >= heapmin.size() ? heapmax.top() : heapmin.top();
     }
 };
+}  // namespace DataStructure

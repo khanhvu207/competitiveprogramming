@@ -1,3 +1,8 @@
+#include <bits/stdc++.h>
+
+namespace DataStructure {
+using namespace std;
+
 template <typename T>
 class fenwickUp {
    public:
@@ -47,3 +52,4 @@ class fenwickDown {
         return res;
     }
 };
+}  // namespace DataStructure

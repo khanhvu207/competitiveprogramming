@@ -37,7 +37,7 @@ using ld = long double;
 const char el = '\n';
 
 
-class string_trie {
+class StringTrie {
   struct trie {
     trie* c[26];
     trie() {
@@ -50,7 +50,7 @@ class string_trie {
 
 public:
   trie* root = new trie();
-  string_trie() {}
+  StringTrie() {}
 
   void insert(string x) {
     trie* p = root;
@@ -96,7 +96,7 @@ void solve() {
         a.push_back(s);
     }
 
-    string_trie tr;
+    StringTrie tr;
     ranges::reverse(a);
     ll res = 0;
     for (int i = 0; i < n; ++i) {
